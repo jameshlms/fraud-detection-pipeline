@@ -5,12 +5,15 @@ _This is a pipeline to demonstrate proficiency of various technologies to build 
 Fraudulent transactions is a commonly used dataset, often used to highlight the ability to resample data to train models. While this project will evaluate resampling and training techniques to address the imbalance of classes, this project will primarily be a demonstration of technologies and skills.
 
 > The technologies and skills that are too be demonstrated are listed below:
+>
 > - Using common Python libraries for data science and machine learning to explore data and build models.
 > - Exporting ONNX model files and using ONNX runtime.
 > - Using C# and .NET for API development to add variety and the ability to integrate with .NET's growing usage.
 
 ## Step-by-Step Plan
+
 This is the ideal roadmap for this project.
+
 1. Data Exploration with Python and Jupyter Notebooks _(In-progress)_
 2. Model Training using Scikit-Learn, PyTorch, or other machine learning libraries.
 3. Export the model as an ONNX model file.
@@ -18,9 +21,11 @@ This is the ideal roadmap for this project.
 5. Load ONNX model file into a runtime using Mircosoft.ML.
 
 ## Data Source
+
 The data is sourced from [this Kaggle page](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud). Necessary acknowledgements are below in the _Acknowlegdements_ section.
 
 ## Acknowledgements
+
 Andrea Dal Pozzolo, Olivier Caelen, Reid A. Johnson and Gianluca Bontempi. Calibrating Probability with Undersampling for Unbalanced Classification. In Symposium on Computational Intelligence and Data Mining (CIDM), IEEE, 2015
 
 Dal Pozzolo, Andrea; Caelen, Olivier; Le Borgne, Yann-Ael; Waterschoot, Serge; Bontempi, Gianluca. Learned lessons in credit card fraud detection from a practitioner perspective, Expert systems with applications,41,10,4915-4928,2014, Pergamon
