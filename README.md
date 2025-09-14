@@ -1,6 +1,6 @@
 # Fraud Detection Pipeline
 
-_This is a pipeline to demonstrate proficiency of various technologies to build an end-to-end data pipeline for prediciting fraudulent credit card transactions._
+_This is a pipeline to demonstrate proficiency of various technologies to build an end-to-end data pipeline for predicting fraudulent credit card transactions._
 
 Fraudulent transactions is a commonly used dataset, often used to highlight the ability to resample data to train models. While this project will evaluate resampling and training techniques to address the imbalance of classes, this project will primarily be a demonstration of technologies and skills.
 
@@ -18,13 +18,57 @@ This is the ideal roadmap for this project.
 2. Model Training using Scikit-Learn, PyTorch, or other machine learning libraries.
 3. Export the model as an ONNX model file.
 4. Create a ASP.NET minimal API with appropriate endpoints.
-5. Load ONNX model file into a runtime using Mircosoft.ML.
+5. Load ONNX model file into a runtime using Microsoft.ML.
 
 ## Data Source
 
-The data is sourced from [this Kaggle page](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud). Necessary acknowledgements are below in the _Acknowlegdements_ section.
+The data is sourced from [this Kaggle page](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud). Necessary acknowledgements are below in the _Acknowledgements_ section.
+
+## Set-Up
+
+Begin by cloning the repository into a directory you are working in.
+
+```bash
+git clone https://github.com/jameshlms/fraud-detection-pipeline.git
+```
+
+Open the project that was just cloned and create a Python Virtual Environment. Depending on the development environment chosen, if prompted to install dependencies from _'requirements.txt'_, accept the prompt.
+
+```bash
+python -m venv <name_of_your_venv>
+```
+
+Once created, activate the virtual environment if not already activated from the project root.
+
+On Windows:
+
+```bash
+<name_of_your_venv>/Scripts/activate
+```
+
+On Linux/MAC:
+
+```bash
+<name_of_your_venv>/bin/activate
+```
+
+Using the activated virtual environment, install the required dependencies if you have not yet or if not prompted before.
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a directory called _'data'_ in the project root. Create two sub-directories, being named _'raw'_ and _'processed'_.
+
+At the project root, create a _'.env'_ file. Assign values to the following variable names:
+
+- RANDOM_STATE (The random state all notebooks and files will use)
 
 ## Acknowledgements
+
+[1] N. V. Chawla, K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer, “SMOTE: Synthetic Minority Over-sampling Technique,” Journal of Artificial Intelligence Research, vol. 16, no. 16, pp. 321–357, Jun. 2002, doi: <https://doi.org/10.1613/jair.953>.
+
+### Citations as per the dataset's Kaggle page
 
 Andrea Dal Pozzolo, Olivier Caelen, Reid A. Johnson and Gianluca Bontempi. Calibrating Probability with Undersampling for Unbalanced Classification. In Symposium on Computational Intelligence and Data Mining (CIDM), IEEE, 2015
 
