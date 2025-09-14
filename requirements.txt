@@ -1,10 +1,7 @@
 pandas
-numpy
-scipy
 scikit-learn
 imbalanced-learn
 seaborn
-matplotlib
 pyarrow
 fastparquet
 python-dotenv
