@@ -58,11 +58,38 @@ Using the activated virtual environment, install the required dependencies if yo
 pip install -r requirements.txt
 ```
 
-Create a directory called _'data'_ in the project root. Create two sub-directories, being named _'raw'_ and _'processed'_.
-
 At the project root, create a _'.env'_ file. Assign values to the following variable names:
 
 - RANDOM_STATE (The random state all notebooks and files will use)
+
+Create a directory called _'data'_ in the project root. Create two sub-directories, being named _'raw'_ and _'processed'_.
+
+It should appear as shown:
+
+```markdown
+root/
+├── data/
+│   ├── processed/
+│   └── raw/
+...
+
+```
+
+Visit the [Kaggle page of the dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) and download the data. Unzip the _'.zip'_ file into `data/raw/`.
+
+Execute the _'split_data.py'_ script in the _'training'_ directory. This will randomly select rows to be training data or testing data (75% of rows are training data and 25% of rows are testing data). The training and testing data are loaded as parquet files in `data/processed/train.parquet` and `data/processed/test.parquet` respectively.
+
+```markdown
+root/
+├── data/
+│   ├── processed/
+│   │   ├── test.parquet
+│   │   └── train.parquet
+│   └── raw/
+│       └── creditcard.csv
+...
+
+```
 
 ## Acknowledgements
 
