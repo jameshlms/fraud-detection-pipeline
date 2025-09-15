@@ -1,10 +1,12 @@
 from os import getenv
 
 from dotenv import load_dotenv
+from numpy import cos, pi, sin
 from pandas import DataFrame, Series, read_csv
 from sklearn.model_selection import train_test_split
 
 load_dotenv()
+
 RANDOM_STATE = int(getenv("RANDOM_STATE", 0))
 TRAINING_FRACTION = float(getenv("TRAINING_FRACTION", 0.75))
 RAW_DATA_PATH = getenv("RAW_DATA_PATH", "./data/raw/creditcard.csv")
@@ -14,6 +16,15 @@ TEST_DATA_PATH = getenv("TEST_DATA_PATH", "./data/processed/test.parquet")
 
 def main(*args, **kwargs) -> None:
     df = read_csv(RAW_DATA_PATH)
+
+    cyclic_features = DataFrame(
+        {
+            "hour_sin": sin(2 * pi * df["Time"] / (60 * 60 * 24)),
+            "hour_cos": cos(2 * pi * df["Time"] / (60 * 60 * 24)),
+        }
+    )
+
+    df = df.join(cyclic_features)
 
     X: DataFrame = df.drop(columns=["Class"])
     y: Series = df["Class"]

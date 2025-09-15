@@ -1,7 +1,7 @@
 .venv/
+.vscode/
 data/
 *.csv
 *.ipynb_checkpoints
 __pycache__/
 .env
-settings.json
