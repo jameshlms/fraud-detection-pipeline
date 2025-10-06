@@ -3,19 +3,19 @@ from os import getenv
 from dotenv import load_dotenv
 from numpy import cos, pi, sin
 from pandas import DataFrame, Series, read_csv
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split as tts
 
 load_dotenv()
 
-RANDOM_STATE = int(getenv("RANDOM_STATE", 0))
-TRAINING_FRACTION = float(getenv("TRAINING_FRACTION", 0.75))
-RAW_DATA_PATH = getenv("RAW_DATA_PATH", "./data/raw/creditcard.csv")
-TRAIN_DATA_PATH = getenv("TRAIN_DATA_PATH", "./data/processed/train.parquet")
-TEST_DATA_PATH = getenv("TEST_DATA_PATH", "./data/processed/test.parquet")
+RANDOM_STATE: int = int(getenv("RANDOM_STATE", 0))
+TRAINING_FRACTION: float = float(getenv("TRAINING_FRACTION", 0.75))
+RAW_DATA_PATH: str = getenv("RAW_DATA_PATH", "./data/raw/creditcard.csv")
+TRAIN_DATA_PATH: str = getenv("TRAIN_DATA_PATH", "./data/processed/train.parquet")
+TEST_DATA_PATH: str = getenv("TEST_DATA_PATH", "./data/processed/test.parquet")
 
 
 def main(*args, **kwargs) -> None:
-    df = read_csv(RAW_DATA_PATH)
+    df: DataFrame = read_csv(RAW_DATA_PATH)
 
     cyclic_features = DataFrame(
         {
@@ -24,12 +24,12 @@ def main(*args, **kwargs) -> None:
         }
     )
 
-    df = df.join(cyclic_features)
+    df: DataFrame = df.join(cyclic_features)
 
     X: DataFrame = df.drop(columns=["Class"])
     y: Series = df["Class"]
 
-    X_train, X_test, y_train, y_test = train_test_split(
+    train_test: tuple[DataFrame, DataFrame, Series, Series] = tts(  # type: ignore
         X,
         y,
         train_size=kwargs.get("train_size", TRAINING_FRACTION),
@@ -37,10 +37,10 @@ def main(*args, **kwargs) -> None:
         stratify=y,
     )
 
-    train_df = DataFrame(X_train)
-    train_df["Class"] = y_train.values
-    test_df = DataFrame(X_test)
-    test_df["Class"] = y_test.values
+    train_df = DataFrame(train_test[0])
+    train_df["Class"] = train_test[2].values
+    test_df = DataFrame(train_test[1])
+    test_df["Class"] = train_test[3].values
 
     train_df.to_parquet(TRAIN_DATA_PATH, index=False)
     test_df.to_parquet(TEST_DATA_PATH, index=False)
