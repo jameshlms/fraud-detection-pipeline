@@ -14,8 +14,8 @@ Fraudulent transactions is a commonly used dataset, often used to highlight the 
 
 This is the ideal roadmap for this project.
 
-1. Data Exploration with Python and Jupyter Notebooks _(In-progress)_
-2. Model Training using Scikit-Learn, PyTorch, or other machine learning libraries.
+1. Data Exploration with Python and Jupyter Notebooks.
+2. Model Training using Scikit-Learn. _(In-progress)_
 3. Export the model as an ONNX model file.
 4. Create a ASP.NET minimal API with appropriate endpoints.
 5. Load ONNX model file into a runtime using Microsoft.ML.
@@ -49,7 +49,7 @@ On Windows:
 On Linux/MAC:
 
 ```bash
-<name_of_your_venv>/bin/activate
+source <name_of_your_venv>/bin/activate
 ```
 
 Using the activated virtual environment, install the required dependencies if you have not yet or if not prompted before.
@@ -94,6 +94,8 @@ root/
 ## Acknowledgements
 
 [1] N. V. Chawla, K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer, “SMOTE: Synthetic Minority Over-sampling Technique,” Journal of Artificial Intelligence Research, vol. 16, no. 16, pp. 321–357, Jun. 2002, doi: <https://doi.org/10.1613/jair.953>.
+
+[2] J. Brownlee, “Cost-Sensitive Learning for Imbalanced Classification,” Machine Learning Mastery, Feb. 06, 2020. <https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/>
 
 ### Citations as per the dataset's Kaggle page
 
