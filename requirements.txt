@@ -6,4 +6,3 @@ pyarrow
 fastparquet
 python-dotenv
 ipykernel
-nbdime
