@@ -4,7 +4,7 @@ _This is a pipeline to demonstrate proficiency of various technologies to build 
 
 Fraudulent transactions is a commonly used dataset, often used to highlight the ability to resample data to train models. While this project will evaluate resampling and training techniques to address the imbalance of classes, this project will primarily be a demonstration of technologies and skills.
 
-> The technologies and skills that are too be demonstrated are listed below:
+> The technologies and skills that are to be demonstrated are listed below:
 >
 > - Using common Python libraries for data science and machine learning to explore data and build models.
 > - Exporting ONNX model files and using ONNX runtime.
@@ -17,7 +17,7 @@ This is the ideal roadmap for this project.
 1. Data Exploration with Python and Jupyter Notebooks.
 2. Model Training using Scikit-Learn. _(In-progress)_
 3. Export the model as an ONNX model file.
-4. Create a ASP.NET minimal API with appropriate endpoints.
+4. Create an ASP.NET minimal API with appropriate endpoints.
 5. Load ONNX model file into a runtime using Microsoft.ML.
 
 ## Data Source
@@ -62,7 +62,7 @@ At the project root, create a _'.env'_ file. Assign values to the following vari
 
 - RANDOM_STATE (The random state all notebooks and files will use)
 
-Create a directory called _'data'_ in the project root. Create two sub-directories, being named _'raw'_ and _'processed'_.
+Create a directory called _'data'_ in the project root. Create two subdirectories, being named _'raw'_ and _'processed'_.
 
 It should appear as shown:
 
