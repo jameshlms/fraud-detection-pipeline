@@ -62,7 +62,7 @@ At the project root, create a _'.env'_ file. Assign values to the following vari
 
 - RANDOM_STATE (The random state all notebooks and files will use)
 
-Create a directory called _'data'_ in the project root. Create two subdirectories, being named _'raw'_ and _'processed'_.
+Create two directories called _'data'_ and _'models'_ in the project root. Create two subdirectories in _'data'_, called _'raw'_ and _'processed'_.
 
 It should appear as shown:
 
@@ -71,6 +71,7 @@ root/
 ├── data/
 │   ├── processed/
 │   └── raw/
+├── models/
 ...
 
 ```
@@ -83,8 +84,8 @@ Execute the _'split_data.py'_ script in the _'training'_ directory. This will ra
 root/
 ├── data/
 │   ├── processed/
-│   │   ├── test.parquet
-│   │   └── train.parquet
+│   │   ├── traindata.csv
+│   │   └── testdata.csv
 │   └── raw/
 │       └── creditcard.csv
 ...
