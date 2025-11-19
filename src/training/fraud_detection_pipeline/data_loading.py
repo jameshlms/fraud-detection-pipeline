@@ -5,13 +5,15 @@ from pandas import DataFrame, Series, read_csv, read_parquet
 
 
 def _rename_mapper(name: str) -> str:
+    if name.startswith("V") and len(name) == 2:
+        name = "v0" + name[1:]
     match name:
-        case "Time":
-            return "time_elapsed"
         case "Class":
             return "is_fraud"
+        case "Time":
+            return "time_elapsed"
         case _:
-            return name.replace(" ", "_").lower()
+            return str(name).lower().replace(" ", "_")
 
 
 def _tts(
