@@ -15,9 +15,9 @@ Fraudulent transactions is a commonly used dataset, often used to highlight the 
 This is the ideal roadmap for this project.
 
 1. Data Exploration with Python and Jupyter Notebooks.
-2. Model Training using Scikit-Learn. _(In-progress)_
+2. Model Training using Scikit-Learn.
 3. Export the model as an ONNX model file.
-4. Create an ASP.NET minimal API with appropriate endpoints.
+4. Create an ASP.NET minimal API with appropriate endpoints. _(In-progress)_
 5. Load ONNX model file into a runtime using Microsoft.ML.
 
 ## Data Source
