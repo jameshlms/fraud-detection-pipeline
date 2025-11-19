@@ -17,7 +17,7 @@ update_registered_converter(
 )
 
 
-def to_onnx_file(
+def export_onnx(
     model: BaseEstimator,
     name: str,
     out_file: str | Path,
@@ -37,12 +37,12 @@ def to_onnx_file(
         f.write(onnx_model.SerializeToString())
 
 
-def write_column_names_json(
-    column_names: list[str], target_column: str, out_file: str | Path
+def write_columns_json(
+    feature_names: list[str], target_column: str, out_file: str | Path
 ):
     data = {
-        "column_names": column_names,
-        "target_column": target_column,
+        "feature_names": feature_names,
+        "target_name": target_column,
     }
     Path(out_file).parent.mkdir(parents=True, exist_ok=True)
     with open(out_file, "w") as f:

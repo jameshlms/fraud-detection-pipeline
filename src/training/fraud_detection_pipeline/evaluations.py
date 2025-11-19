@@ -1,30 +1,7 @@
-from typing import Any, Callable, Union
+from dataclasses import dataclass
+from typing import Any, Union
 
-from attr import dataclass
-from numpy.typing import ArrayLike
 from sklearn.base import BaseEstimator
-from sklearn.metrics import (
-    accuracy_score,
-    average_precision_score,
-    f1_score,
-    precision_score,
-    recall_score,
-)
-
-
-def get_scores(
-    *args: Callable[[ArrayLike, ArrayLike], Union[float, ArrayLike]], y_true, y_pred
-) -> dict[str, Union[float, ArrayLike]]:
-    scorers = args or [
-        accuracy_score,
-        recall_score,
-        precision_score,
-        f1_score,
-        average_precision_score,
-    ]
-    return {
-        metric.__name__.rstrip("_score"): metric(y_true, y_pred) for metric in scorers
-    }
 
 
 @dataclass(frozen=True)
@@ -52,7 +29,3 @@ class EvaluationResults(list[EvaluationEntry]):
         if k == 1:
             return sorted_entries[0]
         return sorted_entries[: (len(self) if k == -1 else k)]
-
-
-if __name__ == "__main__":
-    ...
