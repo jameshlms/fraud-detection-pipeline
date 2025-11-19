@@ -13,6 +13,7 @@ from fraud_detection_pipeline.transformations import add_cyclical_features
 from fraud_detection_pipeline.utils.constants import (
     CURRENT_DIR,
     MODEL_DIRECTORY,
+    PROCESSED_DIRECTORY,
     RAW_DIRECTORY,
 )
 
@@ -29,17 +30,21 @@ def main():
         random_state=RANDOM_STATE,
     )
 
-    concat([X_train, y_train], axis=1).to_csv(
-        r"../data/processed/traindata.csv", index=False
-    )
-    concat([X_test, y_test], axis=1).to_csv(
-        r"../data/processed/testdata.csv", index=False
-    )
-
     add_cyclical_features(X_train, "time_elapsed")
+    add_cyclical_features(X_test, "time_elapsed")
 
     X_train = X_train.drop(columns=["time_elapsed"])
+    X_test = X_test.drop(columns=["time_elapsed"])
+
     X_train = X_train[sorted(X_train.columns)]
+    X_test = X_test[sorted(X_test.columns)]
+
+    concat([X_train, y_train], axis=1).to_csv(
+        CURRENT_DIR / PROCESSED_DIRECTORY / "traindata.csv", index=False
+    )
+    concat([X_test, y_test], axis=1).to_csv(
+        CURRENT_DIR / PROCESSED_DIRECTORY / "testdata.csv", index=False
+    )
 
     pipeline = Pipeline(
         steps=[("scaler", StandardScaler()), ("classifier", XGBClassifier())]
