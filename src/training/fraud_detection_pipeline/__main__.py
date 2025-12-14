@@ -23,11 +23,16 @@ USE_ALL_CPU_CORES = bool(getenv("USE_ALL_CPUS_CORES", 0))
 
 
 def main():
-    X_train, X_test, y_train, y_test = load_split_csv(
-        path=CURRENT_DIR / RAW_DIRECTORY / "creditcard.csv",
-        target="is_fraud",
-        test_size=0.3,
-        random_state=RANDOM_STATE,
+    X_train, X_test, y_train, y_test = tuple(
+        map(
+            lambda x: x.astype(float),
+            load_split_csv(
+                path=CURRENT_DIR / RAW_DIRECTORY / "creditcard.csv",
+                target="is_fraud",
+                test_size=0.3,
+                random_state=RANDOM_STATE,
+            ),
+        )
     )
 
     add_cyclical_features(X_train, "time_elapsed")
@@ -64,14 +69,13 @@ def main():
         "classifier__eval_metric": "auc",
     }
 
-    model = train(X_train.values, y_train.values, pipeline, params)
+    model = train(X_train, y_train, pipeline, params)
 
     export_onnx(
         model,
         "fraud_detection_xgbclassifier",
         out_file=CURRENT_DIR / MODEL_DIRECTORY / "fraud_detection_xgbclassifier.onnx",
         input_dim=X_train.shape[1],
-        input_name="features",
     )
 
     write_columns_json(
